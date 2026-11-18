@@ -1,10 +1,8 @@
+
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP(
-    "Universal Agent Utility Server",
-    host="127.0.0.1",
-    port=8001
-)
+mcp = FastMCP("Universal Agent Utility Server")
+
 
 @mcp.tool()
 def get_system_info() -> dict:
@@ -50,7 +48,3 @@ def calculate(expression: str) -> str:
         return str(evaluate(tree.body))
     except Exception as error:
         return f"Calculation error: {error}"
-
-
-if __name__ == "__main__":
-    mcp.run(transport="streamable-http")
